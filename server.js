@@ -3,6 +3,7 @@ import cors from 'cors';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import 'dotenv/config'; // Load .env variables
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,15 +16,44 @@ const CONFIG_FILE = path.join(__dirname, 'bot-config.json');
 app.use(cors());
 app.use(express.json());
 
+// Helper to parse boolean env vars
+const parseBool = (val) => val === 'true';
+
+// Initial Env Config
+const envConfig = {
+  botName: process.env.BOT_NAME,
+  prefix: process.env.BOT_PREFIX,
+  ownerId: process.env.BOT_OWNER_ID,
+  activityType: process.env.BOT_ACTIVITY_TYPE,
+  statusText: process.env.BOT_STATUS_TEXT,
+  onlineStatus: process.env.BOT_ONLINE_STATUS,
+  debugMode: process.env.BOT_DEBUG_MODE ? parseBool(process.env.BOT_DEBUG_MODE) : undefined,
+  developerMode: process.env.BOT_DEVELOPER_MODE ? parseBool(process.env.BOT_DEVELOPER_MODE) : undefined,
+  syncCommands: process.env.BOT_SYNC_COMMANDS ? parseBool(process.env.BOT_SYNC_COMMANDS) : undefined
+};
+
 // API Routes
 app.get('/api/config', async (req, res) => {
   try {
+    // Try to read from file
     const data = await fs.readFile(CONFIG_FILE, 'utf-8');
-    res.json(JSON.parse(data));
+    const fileConfig = JSON.parse(data);
+    
+    // Merge: File config takes precedence for persistence locally, 
+    // but we could allow ENV to override if we wanted to enforce it.
+    // Here we'll treat ENV as defaults if file is missing/incomplete, 
+    // or you could choose to overwrite file config with ENV.
+    // For now: Return file config, but if fields are missing, fill from ENV.
+    const mergedConfig = { ...envConfig, ...fileConfig };
+    
+    // If we want ENV to always override specific keys, swap the spread order:
+    // const mergedConfig = { ...fileConfig, ...envConfig };
+    
+    res.json(mergedConfig);
   } catch (error) {
     console.error('Error reading config:', error);
-    // If file doesn't exist, return default or empty
-    res.status(500).json({ error: 'Failed to read configuration' });
+    // If file doesn't exist, return env config
+    res.json(envConfig);
   }
 });
 
