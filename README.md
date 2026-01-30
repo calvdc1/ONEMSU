@@ -1,32 +1,35 @@
-MSUan Community Server
+# MSUan Community Server
 
-A welcoming community server for MSUan students across all branches.
-This space is built to connect students from Marawi, IIT, Gensan, Tawi-Tawi, Naawan, Maguindanao, Sulu, Buug, and beyond—because no matter the campus, we are one MSU.
+A unified Discord server that welcomes MSUan students from all branches, built to connect, support, and strengthen the MSU community across campuses.
 
-🌟 Mission
+# Mission
 
-To connect MSUan students from all branches into a single, inclusive community that encourages collaboration, support, and meaningful interaction across campuses.
+To bring together MSUan students from Marawi, IIT, Gensan, Tawi-Tawi, Naawan, Maguindanao, Sulu, Buug, and beyond into one inclusive space that promotes connection, collaboration, and mutual support.
 
-🌍 Vision
+# Vision
 
-We envision a united MSUan community where every student feels welcomed, represented, and empowered—regardless of location—fostering lifelong connections, shared knowledge, and collective growth.
+To become a centralized and trusted community where every MSUan—regardless of campus—feels welcomed, represented, and empowered to grow, share knowledge, and build lasting connections as one MSU.
 
-🤝 What This Server Stands For
+# Purpose
 
-Inclusivity across all MSU campuses
+Unite MSUan students across all branches
 
-Student connection beyond geography
+Encourage cross-campus interaction and collaboration
 
-A safe and respectful environment
+Foster a respectful, inclusive, and student-driven environment
 
-Collaboration, learning, and shared identity
+Strengthen MSU identity beyond geographical boundaries
 
-📌 Who Can Join?
+# Who This Server Is For
 
-MSUan students from any branch
+MSUan students from any branch or campus
 
-Incoming freshmen and alumni are welcome
+Incoming freshmen and current students
 
-Anyone who supports a unified MSU community
+Alumni and supporters of a unified MSU community
 
-Together, we build one MSU, one community.
+# Community Goal
+
+One server.
+One identity.
+One MSUan community.
